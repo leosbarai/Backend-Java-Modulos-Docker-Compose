@@ -4,12 +4,21 @@ import java.util.Date;
 
 public class UserDTO {
 
+    private Long id;
     private String nome;
     private String cpf;
     private String endereco;
     private String email;
     private String telefone;
     private Date dataCadastro;
+
+    public Long getId() {
+        return id;
+    }
+
+    public void setId(Long id) {
+        this.id = id;
+    }
 
     public String getNome() {
         return nome;
@@ -61,6 +70,7 @@ public class UserDTO {
 
     public static UserDTO convert(User user) {
         UserDTO userDTO = new UserDTO();
+        userDTO.setId(user.getId());
         userDTO.setNome(user.getNome());
         userDTO.setEndereco(user.getEndereco());
         userDTO.setCpf(user.getCpf());
