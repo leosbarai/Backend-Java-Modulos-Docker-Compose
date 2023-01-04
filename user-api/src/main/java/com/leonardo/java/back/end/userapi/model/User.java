@@ -1,5 +1,7 @@
 package com.leonardo.java.back.end.userapi.model;
 
+import com.leonardo.java.back.end.userapi.model.dto.UserDTO;
+
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;

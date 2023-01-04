@@ -1,4 +1,6 @@
-package com.leonardo.java.back.end.userapi.model;
+package com.leonardo.java.back.end.userapi.model.dto;
+
+import com.leonardo.java.back.end.userapi.model.User;
 
 import java.util.Date;
 

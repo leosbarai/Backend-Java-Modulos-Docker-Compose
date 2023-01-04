@@ -1,6 +1,6 @@
 package com.leonardo.java.back.end.userapi.controller;
 
-import com.leonardo.java.back.end.userapi.model.UserDTO;
+import com.leonardo.java.back.end.userapi.model.dto.UserDTO;
 import com.leonardo.java.back.end.userapi.service.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
