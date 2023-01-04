@@ -1,7 +1,7 @@
 package com.leonardo.java.back.end.userapi.service;
 
 import com.leonardo.java.back.end.userapi.model.User;
-import com.leonardo.java.back.end.userapi.model.UserDTO;
+import com.leonardo.java.back.end.userapi.model.dto.UserDTO;
 import com.leonardo.java.back.end.userapi.repository.UserRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
