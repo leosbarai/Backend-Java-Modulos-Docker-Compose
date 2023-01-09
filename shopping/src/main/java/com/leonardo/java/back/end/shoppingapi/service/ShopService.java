@@ -1,7 +1,9 @@
 package com.leonardo.java.back.end.shoppingapi.service;
 
 import com.leonardo.java.back.end.shoppingapi.model.Shop;
+import com.leonardo.java.back.end.shoppingapi.model.dto.DTOConverter;
 import com.leonardo.java.back.end.shoppingapi.model.dto.ShopDTO;
+import com.leonardo.java.back.end.shoppingapi.model.dto.ShopReportDTO;
 import com.leonardo.java.back.end.shoppingapi.repository.ShopRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -46,5 +48,14 @@ public class ShopService {
         shop.setDate(new Date());
         shop = shopRepository.save(shop);
         return ShopDTO.convert(shop);
+    }
+
+    public List<ShopDTO> getShopsByFilter(Date dataInicio, Date dataFim, Float valorMinimo) {
+        List<Shop> shops = shopRepository.getShopByFilters(dataInicio, dataFim, valorMinimo);
+        return shops.stream().map(DTOConverter::convert).collect(Collectors.toList());
+    }
+
+    public ShopReportDTO getReportByDate(Date dataInicio, Date dataFim) {
+        return shopRepository.getReportByDate(dataInicio, dataFim);
     }
 }
