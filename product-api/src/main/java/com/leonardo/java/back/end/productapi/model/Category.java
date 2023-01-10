@@ -1,6 +1,8 @@
 package com.leonardo.java.back.end.productapi.model;
 
-import com.leonardo.java.back.end.productapi.model.dto.CategoryDTO;
+
+
+import com.leonardo.java.back.end.product.dto.CategoryDTO;
 
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;

@@ -1,7 +1,6 @@
 package com.leonardo.java.back.end.productapi.model;
 
-
-import com.leonardo.java.back.end.productapi.model.dto.ProductDTO;
+import com.leonardo.java.back.end.product.dto.ProductDTO;
 
 import javax.persistence.*;
 import java.util.Objects;
