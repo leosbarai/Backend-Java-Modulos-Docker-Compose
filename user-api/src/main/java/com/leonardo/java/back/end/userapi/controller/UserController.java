@@ -1,6 +1,7 @@
 package com.leonardo.java.back.end.userapi.controller;
 
-import com.leonardo.java.back.end.userapi.model.dto.UserDTO;
+
+import com.leonardo.java.back.end.user.dto.UserDTO;
 import com.leonardo.java.back.end.userapi.service.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
@@ -30,8 +31,8 @@ public class UserController {
     }
 
     @GetMapping("/user/cpf/{cpf}")
-    UserDTO findByCpf(@PathVariable String cpf) {
-        return userService.findByCpf(cpf);
+    UserDTO findByCpf(@RequestParam(name = "key", required = true) String key, @PathVariable String cpf) {
+        return userService.findByCpf(cpf, key);
     }
 
     @DeleteMapping("/user/{id}")

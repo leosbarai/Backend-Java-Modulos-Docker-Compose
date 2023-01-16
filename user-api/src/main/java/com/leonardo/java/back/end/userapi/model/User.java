@@ -1,6 +1,6 @@
 package com.leonardo.java.back.end.userapi.model;
 
-import com.leonardo.java.back.end.userapi.model.dto.UserDTO;
+import com.leonardo.java.back.end.user.dto.UserDTO;
 
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
@@ -9,7 +9,7 @@ import javax.persistence.Id;
 import java.util.Date;
 import java.util.Objects;
 
-@Entity
+@Entity(name = "user")
 public class User {
 
     @Id
@@ -21,6 +21,7 @@ public class User {
     private String email;
     private String telefone;
     private Date dataCadastro;
+    private String key;
 
     public long getId() {
         return id;
@@ -78,6 +79,14 @@ public class User {
         this.dataCadastro = dataCadastro;
     }
 
+    public String getKey() {
+        return key;
+    }
+
+    public void setKey(String key) {
+        this.key = key;
+    }
+
     public static User convert(UserDTO userDTO){
         User user = new User();
         user.setNome(userDTO.getNome());
@@ -86,6 +95,7 @@ public class User {
         user.setEmail(userDTO.getEmail());
         user.setTelefone(userDTO.getTelefone());
         user.setDataCadastro(userDTO.getDataCadastro());
+        user.setKey(userDTO.getKey());
 
         return user;
     }

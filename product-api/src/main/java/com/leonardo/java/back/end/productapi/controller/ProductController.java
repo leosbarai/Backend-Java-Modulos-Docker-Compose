@@ -1,6 +1,6 @@
 package com.leonardo.java.back.end.productapi.controller;
 
-import com.leonardo.java.back.end.productapi.model.dto.ProductDTO;
+import com.leonardo.java.back.end.product.dto.ProductDTO;
 import com.leonardo.java.back.end.productapi.service.ProductService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;

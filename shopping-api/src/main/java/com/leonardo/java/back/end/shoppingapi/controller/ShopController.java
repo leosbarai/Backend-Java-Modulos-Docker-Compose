@@ -1,7 +1,8 @@
 package com.leonardo.java.back.end.shoppingapi.controller;
 
-import com.leonardo.java.back.end.shoppingapi.model.dto.ShopDTO;
-import com.leonardo.java.back.end.shoppingapi.model.dto.ShopReportDTO;
+
+import com.leonardo.java.back.end.shopping.dto.ShopDTO;
+import com.leonardo.java.back.end.shopping.dto.ShopReportDTO;
 import com.leonardo.java.back.end.shoppingapi.service.ShopService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.format.annotation.DateTimeFormat;
@@ -40,8 +41,8 @@ public class ShopController {
     }
 
     @PostMapping("/shopping")
-    public ShopDTO newShop(@RequestBody ShopDTO shopDTO) {
-        return shopService.save(shopDTO);
+    public ShopDTO newShop(@RequestHeader(name = "key", required = true) String key, @RequestBody ShopDTO shopDTO) {
+        return shopService.save(shopDTO, key);
     }
 
     @GetMapping("/shopping/search")
