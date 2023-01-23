@@ -8,7 +8,10 @@ import com.leonardo.java.back.end.productapi.model.Product;
 import com.leonardo.java.back.end.productapi.repository.CategoryRepository;
 import com.leonardo.java.back.end.productapi.repository.ProductRepository;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.beans.factory.annotation.Value;
+import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Service;
+import org.springframework.web.client.RestTemplate;
 
 import java.util.List;
 import java.util.Optional;
@@ -17,11 +20,22 @@ import java.util.stream.Collectors;
 @Service
 public class ProductService {
 
+    @Value("${PRODUCT_API_URL:http://localhost:8081/product/}")
+    private String productApiURL;
+
     @Autowired
     private ProductRepository productRepository;
 
     @Autowired
     private CategoryRepository categoryRepository;
+
+    public ProductDTO getProductByIdentifier(String productIdentifier) {
+        RestTemplate restTemplate = new RestTemplate();
+        String url = productApiURL + productIdentifier;
+        ResponseEntity<ProductDTO> response = restTemplate.getForEntity(url, ProductDTO.class);
+
+        return response.getBody();
+    }
 
     public List<ProductDTO> getAll() {
         List<Product> products = productRepository.findAll();

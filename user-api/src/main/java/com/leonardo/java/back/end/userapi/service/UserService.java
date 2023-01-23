@@ -7,7 +7,10 @@ import com.leonardo.java.back.end.userapi.model.User;
 
 import com.leonardo.java.back.end.userapi.repository.UserRepository;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.beans.factory.annotation.Value;
+import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Service;
+import org.springframework.web.client.RestTemplate;
 
 import java.util.List;
 import java.util.Optional;
@@ -17,8 +20,19 @@ import java.util.stream.Collectors;
 @Service
 public class UserService {
 
+    @Value("${USER_API_URL:http://localhost:8081/user/}")
+    private String userApiURL;
+
     @Autowired
     private UserRepository userRepository;
+
+    public UserDTO getUserByCpf(String cpf) {
+        RestTemplate restTemplate = new RestTemplate();
+        String url = userApiURL + cpf;
+        ResponseEntity<UserDTO> response = restTemplate.getForEntity(url, UserDTO.class);
+
+        return response.getBody();
+    }
 
     public List<UserDTO> getAll() {
         List<User> usuarios = userRepository.findAll();
